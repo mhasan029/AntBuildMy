@@ -21,6 +21,14 @@ pipeline{
 				sshPublisher(publishers: [sshPublisherDesc(configName: 'server102', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'build/', sourceFiles: 'build/app.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 			}
 		}
+		stage('Move jar from one path to another'){
+			agent {label 'lebelprivate001'}
+			steps{
+				sh 'mv /home/antbuildfiles/app.jar /usr/local/'
+			}
+		}
 		
 	}
 }
+
+
