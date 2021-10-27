@@ -18,7 +18,7 @@ pipeline{
 		stage('deployment'){
 			agent {label 'master'}
 			steps{
-				sshPublisher(publishers: [sshPublisherDesc(configName: 'server102', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/jarfile', remoteDirectorySDF: false, removePrefix: 'build/', sourceFiles: 'build/app.jar')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+				sshPublisher(publishers: [sshPublisherDesc(configName: 'server102', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'mv /home/antbuildfiles/app.jar /usr/local', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: 'build/', sourceFiles: 'build/*.xml')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 			}
 		}
 		
