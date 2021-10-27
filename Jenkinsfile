@@ -2,6 +2,7 @@ pipeline{
   agent none
 	stages{
 		stage('Build with ANT'){
+			agent {label 'master'}
 			steps{
 				withAnt(installation: 'Ant_1.10.12', jdk: 'jdk1.8.0_161') {
 				sh 'ant -f build.xml'
